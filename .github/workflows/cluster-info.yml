@@ -1,0 +1,32 @@
+name: Kubernetes Information
+
+on:
+  push:
+
+jobs:
+
+  cluster-info:
+
+    runs-on: self-hosted
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - name: Current Context
+        run: kubectl config current-context
+
+      - name: Cluster Information
+        run: kubectl cluster-info
+
+      - name: Kubernetes Version
+        run: kubectl version
+
+      - name: Get Nodes
+        run: kubectl get nodes -o wide
+
+      - name: Get Namespaces
+        run: kubectl get ns
+
+      - name: Get System Pods
+        run: kubectl get pods -n kube-system
