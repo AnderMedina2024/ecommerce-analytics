@@ -1,7 +1,7 @@
 name: Checkout Demo
 
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
   checkout-demo:

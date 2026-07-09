@@ -1,11 +1,12 @@
 name: Kubernetes Information
 
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
 
   cluster-info:
+
 
     runs-on: self-hosted
 

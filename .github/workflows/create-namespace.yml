@@ -1,0 +1,32 @@
+name: Create Namespace
+
+on:
+  push:
+
+jobs:
+  create-namespace:
+
+    runs-on: self-hosted
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Show Manifest
+        run: |
+          echo "===== Namespace Manifest ====="
+          cat manifests/namespace.yaml
+
+      - name: Validate Cluster Connection
+        run: |
+          kubectl config current-context
+          kubectl cluster-info
+
+      - name: Apply Namespace
+        run: |
+          kubectl apply -f manifests/namespace.yaml
+
+      - name: Verify Namespace
+        run: |
+          kubectl get ns ecommerce
