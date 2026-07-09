@@ -1,0 +1,33 @@
+﻿name: Runner Information
+
+"on":
+  push:
+
+jobs:
+  runner-info:
+    runs-on: self-hosted
+
+    steps:
+      - name: Show Runner Hostname
+        run: hostname
+
+      - name: Show Current User
+        run: whoami
+
+      - name: Show Working Directory
+        run: pwd
+
+      - name: Show Kernel Version
+        run: uname -a
+
+      - name: Show Date
+        run: date
+
+      - name: Show Environment Variables
+        run: env | sort
+
+      - name: Show Current Directory Contents
+        run: ls -lah
+
+      - name: Show Kubectl Client Version
+        run: kubectl version --client
