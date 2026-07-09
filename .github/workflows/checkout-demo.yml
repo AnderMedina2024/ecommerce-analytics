@@ -1,0 +1,41 @@
+name: Checkout Demo
+
+on:
+  push:
+
+jobs:
+  checkout-demo:
+
+    runs-on: self-hosted
+
+    steps:
+
+      - name: Show workspace BEFORE checkout
+        run: |
+          echo "===== PWD ====="
+          pwd
+          echo
+          echo "===== Workspace ====="
+          echo $GITHUB_WORKSPACE
+          echo
+          echo "===== Files ====="
+          ls -la
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show workspace AFTER checkout
+        run: |
+          echo "===== PWD ====="
+          pwd
+          echo
+          echo "===== Workspace ====="
+          echo $GITHUB_WORKSPACE
+          echo
+          echo "===== Files ====="
+          ls -la
+
+      - name: Recursive directory listing
+        run: |
+          echo "===== Repository tree ====="
+          find . -maxdepth 3
